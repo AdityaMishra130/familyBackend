@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
+
 
 const app = express();
 app.use(cors());
@@ -8,9 +10,7 @@ app.use(express.json());
 
 // 🔗 MongoDB connection
 mongoose
-  .connect(
-    "mongodb+srv://familyuser:OVeGm9y7hHOTCfbx@familycluster.ayqebsl.mongodb.net/familyComments?appName=familyCluster"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB error:", err));
 
